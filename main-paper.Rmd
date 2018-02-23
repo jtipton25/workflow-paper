@@ -1,0 +1,48 @@
+---
+title: "Workflow Paper"
+author: "Simon Goring"
+date: "February 22, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Submission
+
+### Open Quaternary
+
+*Methods papers that outline and test new techniques and discuss potential applications and significance of the technique. In addition, papers that critique or modify extant methodologies and approaches are welcome. Authors should provide a detailed summary of the protocol followed and establish replicability within the body of the paper.*
+
+Submissions should be between 6,000 and 8,000 words in length for Research, Methods, and Review papers, although submissions of all lengths will be considered.
+
+## Abstract
+
+
+## Introduction
+
+A number of papers use multiple models to reconstruct past climates from pollen, using a number of methods.  These methods are described in Chevalier &al.
+
+Some background on reconstruction papers?
+
+This benchmarking is neccessary because it provides a common platform under wehich methods can be tested to a set of pre-defined standards.  This then allows us to test hypotheses about different methods, examine the causes of method divergence and convergence and ask questions about how underlying physical and ecological processes might affect model reliability, precision and accuracy in a paleoecological context.
+
+## Methods
+
+Broad Outline
+
+### Datasets
+
+### Methods
+
+### Tests
+
+## Working Example
+
+Climate datasets
+
+### Results
+
+## Conclusion
+
