@@ -38,6 +38,13 @@ Broad Outline
 ### Methods
 
 ### Tests
+Cross-validation consists of five steps: 1) setting aside a subset of the data (called a test set), 2) fitting a model using the rest of the data (called a training set), 3) generating predictions for the held out test set, 4) evaluating the predictions versus the known truth for the test set, and 5) repeating the process with a different test and training set.
+
+Testing models in cross-validation is a common method in statistics and machine learning to evaluate the predictive performance of a model
+
+Here we perform 10-fold cross-validation, meaning the test set represents 10% of the full training dataset for each cross-validation fold. 
+
+We evaluate the predictions using four metrics: mean square error (MSE), mean absolute error (MAE), emipirical coverage of the 95% credible interval, and continuous rank probability score (CRPS). MSE is a metric for prediction accuracy of the mean. MAE is a metric for prediction accuracy of the median. Coverage is a metric of the accuracy of the prediction uncertainty. CRPS is a combined metric for the accuracy of both the mean and the spread of the uncertainty (Gneiting 2011). 
 
 ## Working Example
 
