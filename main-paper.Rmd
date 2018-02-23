@@ -22,35 +22,26 @@ Submissions should be between 6,000 and 8,000 words in length for Research, Meth
 
 ## Introduction
 
-A number of papers use multiple models to reconstruct past climates from pollen, using a number of methods.  These methods are described in Chevalier &al.
+A number of papers use multiple models to reconstruct past climates from pollen, using a number of methods.  These methods are described in Chevalier &al. IN general comparison of results between proxy records, or the same proxy using differnet methods show both similarities and significant differences. (Examples here?). However, diagnosing the reasons for the differences is difficult. For example, if chironomid and pollen records from the same core show differences in their down-core reconstruction, it may be due to bioligical aspects of the organism-climate relations, but it may also be due simply to differences in the modern samples or modern climate used, or perhaps the size and extent of the training set. If two reconstrucions are performed using different methods on the same proxy and on the same core, and there are differences in the reconstruction, it is not clear which may be "correct", unless all of the biases and other issues of the various methods are understood.  Comparing reconstrucitons in some region from different studies is similarly made difficult if the methods or data differed in the studies. There remain many questions about the various methodologies used in paleoclimate reconstruciton, especially as newer ones are developed and tehrefore have less experience associated with them. What is needed is a study comparing different methods using a standardized set of datasets, to quantitatively evaluate and diagnose the importance of methodology and data in the development of paleoclimate time series and maps, in the  way that CMIP and PMIP programs used common experiments to compare and evaluate differnet global climate models.  . 
 
 Some background on reconstruction papers?
 
-This benchmarking is neccessary because it provides a common platform under wehich methods can be tested to a set of pre-defined standards.  This then allows us to test hypotheses about different methods, examine the causes of method divergence and convergence and ask questions about how underlying physical and ecological processes might affect model reliability, precision and accuracy in a paleoecological context.
+This benchmarking is neccessary because it provides a common platform under which methods can be tested to a set of pre-defined standards.  This then allows us to test hypotheses about different methods, examine the causes of method divergence and convergence and ask questions about how underlying physical and ecological processes might affect model reliability, precision and accuracy in a paleoecological context.
 
 ## Methods
 
 Broad Outline
 
 ### Datasets
-The benchmarking in this paper focuses on modern pollen samples such that both the assemblage and the environmental covariates of interest are both known.
+North AMerican Modern Pollen Dataset version 1.8 (NAMPD; Whitmore et al., 2004):  The NAMPD v 1.8 contains 4833 modern pollen samples accumulated from the literature, along with matched climate and vegetation data. It is a research dataset, and therefore does not contain all of the pollen counts; for example rare and aquatic taxa are excluded. It is in the form of a series of tables in an excel file.  
 
-We use XXX samples from North America and ... ... ... 
+Climate Data
+One question of interest is the importance of climate dataset in affecting climate reconstructions (Fortin and Gajewski, Ladd and Viau,). ALthough a number of methods have been used to assign climate data to pollen samples, for over 20 years, the most common method is to use widely-available gridded datsets(CRU,New et al; WorldClim; BEst;). These are available in different resolutions whcih may affect the results obtained.IN addition, the various products have been shown to have biases in data-sparse regions, for example the Arctic (Way), and these can affect the resuls obtained, at elast in a regional scale (Fortin & Gajewski). We therefore obtained xx datasets to compare the extent to whcih the different datasets are affected by the climate data. FOr example, the MAT produces reconstructions with higher high frequency variability, in part dependent on the resolution of the climate data.
 
-### Models
 
-We evaluate the performance of X models for predicting a climate covariate of interest from pollen assemblages: modern analog technique (MAT), weighted averaging (WA), maximum likelihood response curves (MLRC), random forest (RF), ... ... 
-
-For a description of these models and relevant references the reader is referred to Chevalier, et al. (2018). 
-
-Our benchmarking framework has been developed to easily include any other models that future researchers may want to evaluate. 
+### Methods
 
 ### Tests
-Cross-validation is a common method in statistics and machine learning to evaluate the predictive performance of models. In cross-validation experiments the covariate of interest is known but held out for a subset of the data (called a test set). The models to be evaluated are then fit on the rest of the data (called a training set). Predictions are then generated for the test set. Those predictions are then evaluted against the known truth. The whole process is then repeated with a different test set until every observation has been in the test set exactly once.   
-
-Here we perform 10-fold cross-validation, meaning each test set consists of 10% of the full training dataset for each of the 10 cross-validation folds. 
-
-We evaluate the predictions for the covariate from cross-validation to the true covariate using four metrics: mean square error (MSE), mean absolute error (MAE), emipirical coverage of the 95% credible interval, and continuous rank probability score (CRPS). MSE is a metric of prediction accuracy of the mean. MAE is a metric of prediction accuracy of the median. Coverage is a metric of the accuracy of the prediction uncertainty. CRPS is a combined metric of the accuracy of both the mean and the spread of the predictions (Gneiting 2011). 
 
 ## Working Example
 
@@ -59,4 +50,6 @@ Climate datasets
 ### Results
 
 ## Conclusion
+
+References
 
