@@ -7,6 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
 ```
 
 ## Submission
@@ -66,7 +67,17 @@ The benchmarking method proposed above provides an opportunity to examine the im
 ```
 ### Results
 
-```{}
+#### Differences by Resolution
+
+```{r}
+clim_files <- list.files('../benchmark-data/Pollen/Whitmore/',
+                         pattern="worldclim", full.names = TRUE)
+
+climate <- clim_files %>% 
+  purrr::map(readr::read_csv) %>% 
+  purrr::reduce(left_join, 
+                by=c('X1', 'SITENAME', 'LONDD', 'LATDD', 'ELEVATION'))
+
 ```
 
 ## Conclusion
