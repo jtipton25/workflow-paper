@@ -33,41 +33,30 @@ This benchmarking is neccessary because it provides a common platform under wehi
 Broad Outline
 
 ### Datasets
+The benchmarking in this paper focuses on modern pollen samples such that both the assemblage and the environmental covariates of interest are both known.
 
+We use XXX samples from North America and ... ... ... 
 
-### Methods
+### Models
+
+We evaluate the performance of X models for predicting a climate covariate of interest from pollen assemblages: modern analog technique (MAT), weighted averaging (WA), maximum likelihood response curves (MLRC), random forest (RF), ... ... 
+
+For a description of these models and relevant references the reader is referred to Chevalier, et al. (2018). 
+
+Our benchmarking framework has been developed to easily include any other models that future researchers may want to evaluate. 
 
 ### Tests
-Cross-validation consists of five steps: 1) setting aside a subset of the data (called a test set), 2) fitting a model using the rest of the data (called a training set), 3) generating predictions for the held out test set, 4) evaluating the predictions versus the known truth for the test set, and 5) repeating the process with a different test and training set.
+Cross-validation is a common method in statistics and machine learning to evaluate the predictive performance of models. In cross-validation experiments the covariate of interest is known but held out for a subset of the data (called a test set). The models to be evaluated are then fit on the rest of the data (called a training set). Predictions are then generated for the test set. Those predictions are then evaluted against the known truth. The whole process is then repeated with a different test set until every observation has been in the test set exactly once.   
 
-Testing models in cross-validation is a common method in statistics and machine learning to evaluate the predictive performance of a model
+Here we perform 10-fold cross-validation, meaning each test set consists of 10% of the full training dataset for each of the 10 cross-validation folds. 
 
-Here we perform 10-fold cross-validation, meaning the test set represents 10% of the full training dataset for each cross-validation fold. 
-
-We evaluate the predictions using four metrics: mean square error (MSE), mean absolute error (MAE), emipirical coverage of the 95% credible interval, and continuous rank probability score (CRPS). MSE is a metric for prediction accuracy of the mean. MAE is a metric for prediction accuracy of the median. Coverage is a metric of the accuracy of the prediction uncertainty. CRPS is a combined metric for the accuracy of both the mean and the spread of the uncertainty (Gneiting 2011). 
+We evaluate the predictions for the covariate from cross-validation to the true covariate using four metrics: mean square error (MSE), mean absolute error (MAE), emipirical coverage of the 95% credible interval, and continuous rank probability score (CRPS). MSE is a metric of prediction accuracy of the mean. MAE is a metric of prediction accuracy of the median. Coverage is a metric of the accuracy of the prediction uncertainty. CRPS is a combined metric of the accuracy of both the mean and the spread of the predictions (Gneiting 2011). 
 
 ## Working Example
 
-A challenge for comparing climate reconstructions across publications has been the use of various climate base products to obtain climate data for calibration and, ultimately, reconstruction.  While researchers often base their choice of climate model on what is percieved to be an assessment of the objective quality of the underlying data, little is known about the effects of the choice of underlying climate data, or the resolution of that data on model performance.  REFER TO THE LADD PAPER HERE.
+Climate datasets
 
-Among recent publications the breakdown of climate datasets is as follows:
-
-| Climate Dataset |  Number of Papers |
-| --------------- | ----------------- |
-| PRISM           |        XXXX       |
-| WorldClim       |        XXXX       |
-| CRU (New et al) |        XXXX       |
-
-
-The benchmarking method proposed above provides an opportunity to examine the impacts of base data choice and resolution, by providing a framework with which to test multiple pollen based climate models, multiple base climate data and multiple resolutions of the climate data.
-
-```{r}
-
-```
 ### Results
-
-```{}
-```
 
 ## Conclusion
 
