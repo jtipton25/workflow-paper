@@ -34,15 +34,33 @@ Broad Outline
 
 ### Datasets
 
+
 ### Methods
 
 ### Tests
 
 ## Working Example
 
-Climate datasets
+A challenge for comparing climate reconstructions across publications has been the use of various climate base products to obtain climate data for calibration and, ultimately, reconstruction.  While researchers often base their choice of climate model on what is percieved to be an assessment of the objective quality of the underlying data, little is known about the effects of the choice of underlying climate data, or the resolution of that data on model performance.  REFER TO THE LADD PAPER HERE.
 
+Among recent publications the breakdown of climate datasets is as follows:
+
+| Climate Dataset |  Number of Papers |
+| --------------- | ----------------- |
+| PRISM           |        XXXX       |
+| WorldClim       |        XXXX       |
+| CRU (New et al) |        XXXX       |
+
+
+The benchmarking method proposed above provides an opportunity to examine the impacts of base data choice and resolution, by providing a framework with which to test multiple pollen based climate models, multiple base climate data and multiple resolutions of the climate data.
+
+```{r}
+
+```
 ### Results
+
+```{}
+```
 
 ## Conclusion
 
