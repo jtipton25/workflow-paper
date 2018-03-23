@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(dplyr)
+library(purrr)
 ```
 
 ## Submission
@@ -38,7 +39,16 @@ Broad Outline
 
 ### Methods
 
+Pollen-based climate reconstruction has a number of implementations [], some of which are implemented directly in R [], others which have been implemented in other programming languages or as executable scripts.  This benchmarking approach uses wrappers for these methods, providing the opportunity to link to individual methods in a consistent manner, while still retaining the flexibility inherent to individual models or their various implementations.
+
+| Method | Implementation |
+| MAT | `rioja` |
+| WA | `rioja`  |
+
+All wrapped functions are implemented using R to provide a consistent output format []().  
+
 ### Tests
+
 Cross-validation consists of five steps: 1) setting aside a subset of the data (called a test set), 2) fitting a model using the rest of the data (called a training set), 3) generating predictions for the held out test set, 4) evaluating the predictions versus the known truth for the test set, and 5) repeating the process with a different test and training set.
 
 Testing models in cross-validation is a common method in statistics and machine learning to evaluate the predictive performance of a model
@@ -63,22 +73,31 @@ Among recent publications the breakdown of climate datasets is as follows:
 The benchmarking method proposed above provides an opportunity to examine the impacts of base data choice and resolution, by providing a framework with which to test multiple pollen based climate models, multiple base climate data and multiple resolutions of the climate data.
 
 ```{r}
-
-```
-### Results
-
-#### Differences by Resolution
-
-```{r}
-clim_files <- list.files('../benchmark-data/Pollen/Whitmore/',
+clim_files <- list.files('../benchmark-data/Climate/Worldclim/',
                          pattern="worldclim", full.names = TRUE)
 
 climate <- clim_files %>% 
   purrr::map(readr::read_csv) %>% 
   purrr::reduce(left_join, 
-                by=c('X1', 'SITENAME', 'LONDD', 'LATDD', 'ELEVATION'))
+                by=c('ID2', 'LONDD', 'LATDD', 'ELEVATION'))
+
+colnames(climate)[5:8] <- c("0.5", "10", "2.5", "5.0")
 
 ```
+
+Within the benchmarking system a set of curated datasets are provided.  These datasets are fully described and returned as data objects from the `pcmip-data` package.  This package provides certain standardized elements, for example, data extraction based on the parent calibration dataset.
+
+To analyze the effects of input data on the calibration methods we began by asking a simple, bu illustrative question.
+
+## Results
+
+### Climate Resolution
+
+Climate data was obtained from WorldClim at four different native resolutions, from the 10, 5, 2.5 and 0.5 arcminute data products [REF].  These data were then overlain on the location data for Whitmore et al [REF] described earlier.  
+
+
+
+### 
 
 ## Conclusion
 
