@@ -1,6 +1,5 @@
 ---
 title: "Workflow Paper"
-author: "Simon Goring"
 date: "February 22, 2018"
 output: html_document
 ---
@@ -24,17 +23,25 @@ Submissions should be between 6,000 and 8,000 words in length for Research, Meth
 
 ## Introduction
 
-A number of papers use multiple models to reconstruct past climates from pollen, using a number of methods.  These methods are described in Chevalier &al.
+A number of papers use multiple models to reconstruct past climates from pollen, using a number of methods.  These methods are described in Chevalier &al. IN general comparison of results between proxy records, or the same proxy using differnet methods show both similarities and significant differences. (Examples here?). However, diagnosing the reasons for the differences is difficult. For example, if chironomid and pollen records from the same core show differences in their down-core reconstruction, it may be due to bioligical aspects of the organism-climate relations, but it may also be due simply to differences in the modern samples or modern climate used, or perhaps the size and extent of the training set. If two reconstrucions are performed using different methods on the same proxy and on the same core, and there are differences in the reconstruction, it is not clear which may be "correct", unless all of the biases and other issues of the various methods are understood.  Comparing reconstrucitons in some region from different studies is similarly made difficult if the methods or data differed in the studies. There remain many questions about the various methodologies used in paleoclimate reconstruciton, especially as newer ones are developed and therefore have less experience associated with them. What is needed is a study comparing different methods using a standardized set of datasets, to quantitatively evaluate and diagnose the importance of methodology and data in the development of paleoclimate time series and maps, in the  way that CMIP and PMIP programs used common experiments to compare and evaluate differnet global climate models.  
+
+We are doing this experiment using pollen data as these are the most widely used paleoclimate proxy records for Holocene-scale reconstrucitons. IMportantlyly, continental databases are available fro North AMerica, Europe, and being developed for otgher parts of the world. There is therefore sufficient data available to make tests such the importance of sample domain on reconstrucvitons, or site density, length of environment gradient. Studies can be attempted on local, regional but also continetal and intercontinental scales. We anticipate that the resutls of these studies will be applicable to any proxy record. 
 
 Some background on reconstruction papers?
 
-This benchmarking is neccessary because it provides a common platform under wehich methods can be tested to a set of pre-defined standards.  This then allows us to test hypotheses about different methods, examine the causes of method divergence and convergence and ask questions about how underlying physical and ecological processes might affect model reliability, precision and accuracy in a paleoecological context.
+This benchmarking is neccessary because it provides a common platform under which methods can be tested to a set of pre-defined standards.  This then allows us to test hypotheses about different methods, examine the causes of method divergence and convergence and ask questions about how underlying physical and ecological processes might affect model reliability, precision and accuracy in a paleoecological context.
 
 ## Methods
 
 Broad Outline
 
 ### Datasets
+
+#### Pollen Data
+North American Modern Pollen Dataset version 1.8 (NAMPD; Whitmore et al., 2004):  The NAMPD v 1.8 contains 4833 modern pollen samples accumulated from the literature, along with matched climate and vegetation data. It is a research dataset, and therefore does not contain all of the pollen counts; for example rare and aquatic taxa are excluded. It is in the form of a series of tables in an excel file.  
+
+#### Climate Data
+One question of interest is the importance of climate dataset in affecting climate reconstructions (Fortin and Gajewski, Ladd and Viau,). ALthough a number of methods have been used to assign climate data to pollen samples, for over 20 years, the most common method is to use widely-available gridded datsets(CRU,New et al; WorldClim; BEst;). These are available in different resolutions whcih may affect the results obtained.IN addition, the various products have been shown to have biases in data-sparse regions, for example the Arctic (Way), and these can affect the resuls obtained, at elast in a regional scale (Fortin & Gajewski). We therefore obtained xx datasets to compare the extent to whcih the different datasets are affected by the climate data. FOr example, the MAT produces reconstructions with higher high frequency variability, in part dependent on the resolution of the climate data.
 
 
 ### Methods
@@ -59,16 +66,7 @@ We evaluate the predictions using four metrics: mean square error (MSE), mean ab
 
 ## Working Example
 
-A challenge for comparing climate reconstructions across publications has been the use of various climate base products to obtain climate data for calibration and, ultimately, reconstruction.  While researchers often base their choice of climate model on what is percieved to be an assessment of the objective quality of the underlying data, little is known about the effects of the choice of underlying climate data, or the resolution of that data on model performance.  REFER TO THE LADD PAPER HERE.
-
-Among recent publications the breakdown of climate datasets is as follows:
-
-| Climate Dataset |  Number of Papers |
-| --------------- | ----------------- |
-| PRISM           |        XXXX       |
-| WorldClim       |        XXXX       |
-| CRU (New et al) |        XXXX       |
-
+### Climate datasets
 
 The benchmarking method proposed above provides an opportunity to examine the impacts of base data choice and resolution, by providing a framework with which to test multiple pollen based climate models, multiple base climate data and multiple resolutions of the climate data.
 
@@ -94,10 +92,7 @@ To analyze the effects of input data on the calibration methods we began by aski
 ### Climate Resolution
 
 Climate data was obtained from WorldClim at four different native resolutions, from the 10, 5, 2.5 and 0.5 arcminute data products [REF].  These data were then overlain on the location data for Whitmore et al [REF] described earlier.  
-
-
-
-### 
-
 ## Conclusion
+
+## References
 
