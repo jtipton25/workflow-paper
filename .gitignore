@@ -34,3 +34,7 @@ vignettes/*.pdf
 *.knit.md
 .Rproj.user
 *.Rproj
+
+*.sublime-project
+*.sublime-workspace
+
