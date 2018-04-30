@@ -1,0 +1,346 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="date" content="2018-02-22" />
+  <title>Workflow Paper</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="paper_style.css" type="text/css" />
+</head>
+<body>
+<div id="header">
+<h1 class="title">Workflow Paper</h1>
+<h3 class="date">February 22, 2018</h3>
+</div>
+<p><code>{r setup, include=FALSE} knitr::opts_chunk$set(echo = TRUE) library(dplyr) library(purrr)</code></p>
+<h2 id="submission">Submission</h2>
+<h3 id="open-quaternary">Open Quaternary</h3>
+<p><em>Methods papers that outline and test new techniques and discuss potential applications and significance of the technique. In addition, papers that critique or modify extant methodologies and approaches are welcome. Authors should provide a detailed summary of the protocol followed and establish replicability within the body of the paper.</em></p>
+<p>Submissions should be between 6,000 and 8,000 words in length for Research, Methods, and Review papers, although submissions of all lengths will be considered.</p>
+<h2 id="abstract">Abstract</h2>
+<h2 id="introduction">Introduction</h2>
+<p>A number of papers use multiple models to reconstruct past climates from pollen, using a number of methods. These methods are described in Chevalier &amp;al. In general comparison of results between proxy records, or the same proxy using different methods show both similarities and significant differences. (Examples here?). However, diagnosing the reasons for the differences is difficult. For example, if chironomid and pollen records from the same core show differences in their down-core reconstruction <span class="citation">(e.g., Rosén et al. 2003 &amp; others?)</span>, it may be due to bioligical aspects of the organism-climate relations, but it may also be due simply to differences in the modern samples or modern climate used, or perhaps the size and extent of the training set. If two reconstructions are performed using different methods on the same proxy and on the same core, and there are differences in the reconstruction, it is not clear which may be &quot;correct&quot;, unless all of the biases and other issues of the various methods are understood. Comparing reconstructions in some region from different studies is similarly made difficult if the methods or data differed in the studies. There remain many questions about the various methodologies used in paleoclimate reconstruction, especially as newer ones are developed and therefore have less experience associated with them. In order to quantitatively evaluate the impact of methodological choices on resulting reconstruction, a framework for systematic comparison of different methods using a standardized set of datasets is needed. This kind of formal comparison is common in the climate modeling community (CMIP, PMIP, etc.) (Taylor, et al. 2012, Braconnot, et al. 2012, etc), but has not become standard in evaluating choices in paleoclimate reconstructions.</p>
+<p>We are doing this experiment using pollen data as these are the most widely used paleoclimate proxy records for Holocene-scale reconstructions. Importantly, continental databases are available from North AMerica, Europe, and being developed for other parts of the world. There is therefore sufficient data available to make tests such the importance of sample domain on reconstructions, or site density, length of environment gradient. Studies can be attempted on local, regional but also continetal and intercontinental scales. We anticipate that the results of these studies will be applicable to any proxy record.</p>
+<h2 id="pollen-based-reconstruction-practice">Pollen-Based Reconstruction Practice</h2>
+<h2 id="a-need-for-benchmarks">A Need for Benchmarks</h2>
+<p>Benchmarking climate reconstruction models is necessary because benchmarks provides a common platform under which methods can be tested to a set of pre-defined standards. This then allows us to test hypotheses about different methods, examine the causes of method divergence and convergence and ask questions about how underlying physical and ecological processes might affect model reliability, precision and accuracy in a paleoecological context.</p>
+<h2 id="methods">Methods</h2>
+<p>Broad Outline</p>
+<h3 id="datasets">Datasets</h3>
+<h4 id="pollen-data">Pollen Data</h4>
+<p>North American Modern Pollen Dataset version 1.8 <span class="citation">(NAMPD; Whitmore et al. 2005)</span>: The NAMPD v1.8 contains 4833 modern pollen samples obtained from the published and unpublished sources, along with matched climate and vegetation data. It is a research dataset, and therefore does not contain all of the pollen counts; for example rare and aquatic taxa are excluded. It is in the form of a series of tables in an excel file.</p>
+<h4 id="climate-data">Climate Data</h4>
+<p>One question of interest is the importance of climate dataset in affecting climate reconstructions <span class="citation">(Fortin and Gajewski 2012; Ladd, Way, and Viau 2015)</span>. Although a number of methods have been used to assign climate data to pollen samples, for over 20 years, the most common method is to use widely-available gridded datsets(CRU,New et al; WorldClim; BEst;). These are available in different resolutions whcih may affect the results obtained. In addition, the various products have been shown to have biases in data-sparse regions, for example the Arctic <span class="citation">(R. G. Way and Bonnaventure 2015)</span>, and these can affect the results obtained, at least in a regional scale <span class="citation">(Fortin and Gajewski 2012)</span>. We therefore obtained xx datasets to compare the extent to which different datasets are affected by the climate data. For example, MAT produces reconstructions with higher high frequency variability, in part dependent on the resolution of the climate data.</p>
+<h3 id="methods-1">Methods</h3>
+<p>Pollen-based climate reconstruction has a number of implementations, some of which are implemented directly in R, others which have been implemented in other programming languages or as executable scripts. This benchmarking approach uses wrappers for these methods, providing the opportunity to link to individual methods in a consistent manner, while still retaining the flexibility inherent to individual models or their various implementations.</p>
+<table>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Implementation</th>
+<th>Citation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>MAT</td>
+<td><code>rioja</code></td>
+<td><span class="citation">(Juggins 2017)</span></td>
+</tr>
+<tr class="even">
+<td>WA</td>
+<td><code>rioja</code></td>
+<td><span class="citation">(Juggins 2017)</span></td>
+</tr>
+</tbody>
+</table>
+<p>All wrapped functions are implemented using R to provide a consistent output format.</p>
+<h3 id="tests">Tests</h3>
+<p>Testing models in cross-validation is a common method in statistics and machine learning to evaluate the predictive performance of a model. Cross-validation consists of five steps: 1) setting aside a subset of the data (called a test set), 2) fitting a model using the rest of the data (called a training set), 3) generating predictions for the held out test set, 4) evaluating the predictions versus the known truth for the test set, and 5) repeating the process with a different test and training set.</p>
+<p>In the context of paleoclimatic reconstruction careful consideration is required when generalizing from cross-validation performance to potential reconstruction performance (Jackson 2012). (need to expand on this; may belong in a different place)</p>
+<p>Here we perform 10-fold cross-validation. This means that in each fold the test set comprises 10% of the full training dataset and after the ten folds every observation in the modern calibration dataset will have been in the test set.</p>
+<p>We first evaluate cross-validation experiments by plotting the observed versus predicted covariate for each sample. We fit a linear regression to this and compare the slope to the one-to-one line. For a perfect model, the predicted values would fall directly on the one-to-one line. If the linear regression slope is less than one this indicates a shrinkage to the mean in the predictions. Slopes greater than one are not common in the context of the models we will be using, but they would indicate too large a variance in the predictions.</p>
+<p>In addition to plotting, we evaluate the predictions using four scoring metrics: mean square error (MSE), mean absolute error (MAE), empirical coverage of the 95% credible interval, and continuous rank probability score (CRPS). These are standard in statistics and each emphasize different predictive skill. MSE measures prediction accuracy of the mean while MAE emphasizes prediction accuracy of the median. For both MSE and MAE lower values represent better predictions. MSE and MAE do not contain much information on the models' skill in variance, for that we use coverage. Coverage is how many of the e.g. 95% credible intervals of the predicted covariate overlap with the observed covariate -- if the empirical coverage for a model's predictions is close to the nominal rate (in this case, 95%) then we can say the model has a good variance and meaningful uncertainties. CRPS is a combined metric for the accuracy of both the mean and the spread of the uncertainty and is especially useful for models that generate a full predictive distribution (Gneiting 2011). Lower CRPS values represent better predictions.</p>
+<h2 id="working-example">Working Example</h2>
+<h3 id="climate-datasets">Climate datasets</h3>
+<p>The benchmarking method proposed above provides an opportunity to examine the impacts of base data choice and resolution, by providing a framework with which to test multiple pollen based climate models, multiple base climate data and multiple resolutions of the climate data.</p>
+<pre class="{r}"><code>clim_files &lt;- list.files(&#39;../benchmark-data/Climate/Worldclim/&#39;,
+                         pattern=&quot;worldclim&quot;, full.names = TRUE)
+
+climate &lt;- clim_files %&gt;% 
+  purrr::map(readr::read_csv) %&gt;% 
+  purrr::reduce(left_join, 
+                by=c(&#39;ID2&#39;, &#39;LONDD&#39;, &#39;LATDD&#39;, &#39;ELEVATION&#39;))
+
+colnames(climate)[5:8] &lt;- c(&quot;0.5&quot;, &quot;10&quot;, &quot;2.5&quot;, &quot;5.0&quot;)
+</code></pre>
+<p>Within the benchmarking system a set of curated datasets are provided. These datasets are fully described and returned as data objects from the <code>pcmip-data</code> package. This package provides certain standardized elements, for example, data extraction based on the parent calibration dataset.</p>
+<p>To analyze the effects of input data on the calibration methods we began by asking a simple, but illustrative question.</p>
+<h2 id="results">Results</h2>
+<h3 id="climate-resolution">Climate Resolution</h3>
+<p>Climate data was obtained from WorldClim at four different native resolutions, from the 10, 5, 2.5 and 0.5 arcminute data products [REF]. These data were then overlain on the location data for Whitmore et al. <span class="citation">(2005)</span> described earlier.</p>
+<h2 id="conclusion">Conclusion</h2>
+<h2 id="references">References</h2>
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="never" default-locale="en-US">
+  <info>
+    <title>Elsevier Harvard (with titles)</title>
+    <id>http://www.zotero.org/styles/elsevier-harvard</id>
+    <link href="http://www.zotero.org/styles/elsevier-harvard" rel="self"/>
+    <link href="http://www.zotero.org/styles/ecology-letters" rel="template"/>
+    <link href="http://www.elsevier.com/journals/biological-conservation/0006-3207/guide-for-authors#68000" rel="documentation"/>
+    <author>
+      <name>David Kaplan</name>
+      <email>david.kaplan@ird.fr</email>
+    </author>
+    <contributor>
+      <name>Simon Kornblith</name>
+      <email>simon@simonster.com</email>
+    </contributor>
+    <contributor>
+      <name>Bruce D'Arcus</name>
+    </contributor>
+    <contributor>
+      <name>Curtis M. Humphrey</name>
+    </contributor>
+    <contributor>
+      <name>Richard Karnesky</name>
+      <email>karnesky+zotero@gmail.com</email>
+      <uri>http://arc.nucapt.northwestern.edu/Richard_Karnesky</uri>
+    </contributor>
+    <contributor>
+      <name>Sebastian Karcher</name>
+    </contributor>
+    <category citation-format="author-date"/>
+    <category field="biology"/>
+    <category field="generic-base"/>
+    <updated>2015-03-14T18:08:22+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <macro name="container">
+    <choose>
+      <if type="chapter paper-conference" match="any">
+        <text term="in" prefix=", " suffix=": "/>
+        <names variable="editor translator" delimiter=", " suffix=", ">
+          <name name-as-sort-order="all" sort-separator=", " initialize-with="." delimiter=", " delimiter-precedes-last="always"/>
+          <label form="short" text-case="capitalize-first" prefix=" (" suffix=")"/>
+        </names>
+        <group delimiter=", ">
+          <text variable="container-title" text-case="title"/>
+          <text variable="collection-title" text-case="title"/>
+        </group>
+      </if>
+      <else-if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+        <group prefix=", " delimiter=", ">
+          <text variable="container-title"/>
+          <text variable="collection-title"/>
+        </group>
+      </else-if>
+      <else>
+        <group prefix=". " delimiter=", ">
+          <text variable="container-title" form="short"/>
+          <text variable="collection-title"/>
+        </group>
+      </else>
+    </choose>
+  </macro>
+  <macro name="author">
+    <names variable="author">
+      <name name-as-sort-order="all" sort-separator=", " initialize-with="." delimiter=", " delimiter-precedes-last="always"/>
+      <label form="short" prefix=" (" suffix=")" text-case="capitalize-first"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <text macro="title"/>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="author-short">
+    <names variable="author">
+      <name form="short" and="text" delimiter=", " initialize-with=". "/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+        <choose>
+          <if type="bill book graphic legal_case legislation motion_picture report song" match="any">
+            <text variable="title" form="short" font-style="italic"/>
+          </if>
+          <else>
+            <text variable="title" form="short" quotes="true"/>
+          </else>
+        </choose>
+      </substitute>
+    </names>
+  </macro>
+  <macro name="access">
+    <choose>
+      <if variable="DOI">
+        <text variable="DOI" prefix="doi:"/>
+      </if>
+      <else-if type="webpage">
+        <group delimiter=" ">
+          <text value="URL"/>
+          <text variable="URL"/>
+          <group prefix="(" suffix=").">
+            <text term="accessed" suffix=" "/>
+            <date variable="accessed">
+              <date-part name="month" form="numeric" suffix="."/>
+              <date-part name="day" suffix="."/>
+              <date-part name="year" form="short"/>
+            </date>
+          </group>
+        </group>
+      </else-if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="report thesis" match="any">
+        <text variable="title"/>
+        <group prefix=" (" suffix=")" delimiter=" ">
+          <text variable="genre"/>
+          <text variable="number" prefix="No. "/>
+        </group>
+      </if>
+      <else-if type="bill book graphic legal_case legislation motion_picture report song speech" match="any">
+        <text variable="title"/>
+        <text macro="edition" prefix=", "/>
+      </else-if>
+      <else-if type="webpage">
+        <text variable="title"/>
+        <text value="WWW Document" prefix=" [" suffix="]"/>
+      </else-if>
+      <else>
+        <text variable="title"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher"/>
+      <text variable="publisher-place"/>
+    </group>
+  </macro>
+  <macro name="event">
+    <choose>
+      <if variable="event">
+        <text term="presented at" text-case="capitalize-first" suffix=" "/>
+        <text variable="event"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="issued">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year"/>
+        </date>
+      </if>
+      <else>
+        <text term="no date" form="short"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="edition">
+    <group delimiter=" ">
+      <choose>
+        <if is-numeric="edition">
+          <number variable="edition" form="ordinal"/>
+        </if>
+        <else>
+          <text variable="edition" suffix="."/>
+        </else>
+      </choose>
+      <text value="ed"/>
+    </group>
+  </macro>
+  <macro name="locators">
+    <choose>
+      <if type="article-journal article-magazine article-newspaper" match="any">
+        <group prefix=" " delimiter=", ">
+          <group>
+            <text variable="volume"/>
+          </group>
+          <text variable="page"/>
+        </group>
+      </if>
+      <else-if type="bill book graphic legal_case legislation motion_picture report song thesis" match="any">
+        <group delimiter=", " prefix=". ">
+          <text macro="event"/>
+          <text macro="publisher"/>
+        </group>
+      </else-if>
+      <else-if type="chapter paper-conference" match="any">
+        <group delimiter=", " prefix=". ">
+          <text macro="event"/>
+          <text macro="publisher"/>
+          <group>
+            <label variable="page" form="short" suffix=" "/>
+            <text variable="page"/>
+          </group>
+        </group>
+      </else-if>
+      <else-if type="patent">
+        <text variable="number" prefix=". "/>
+      </else-if>
+    </choose>
+  </macro>
+  <citation et-al-min="3" et-al-use-first="1" disambiguate-add-givenname="true" disambiguate-add-year-suffix="true" collapse="year" cite-group-delimiter=", ">
+    <sort>
+      <key macro="author"/>
+      <key macro="issued" sort="descending"/>
+    </sort>
+    <layout prefix="(" suffix=")" delimiter="; ">
+      <group delimiter=", ">
+        <text macro="author-short"/>
+        <text macro="issued"/>
+        <group delimiter=" ">
+          <label variable="locator" form="short"/>
+          <text variable="locator"/>
+        </group>
+      </group>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true" entry-spacing="0" line-spacing="1">
+    <sort>
+      <key macro="author"/>
+      <key macro="issued" sort="descending"/>
+    </sort>
+    <layout>
+      <group suffix=".">
+        <text macro="author" suffix=","/>
+        <text macro="issued" prefix=" "/>
+        <group prefix=". ">
+          <text macro="title"/>
+          <text macro="container"/>
+          <text macro="locators"/>
+        </group>
+      </group>
+      <text macro="access" prefix=". "/>
+    </layout>
+  </bibliography>
+</style>
+<div id="refs" class="references">
+<div id="ref-fortin2012potential">
+<p>Fortin, M-C, and K Gajewski. 2012. “Potential Problems with the Use of Gridded Climate Data in Regional Quantitative Paleoenvironmental Studies from Data-Poor Regions.” <em>Journal of Paleolimnology</em> 48 (3). Springer: 641–50.</p>
+</div>
+<div id="ref-rioja2017">
+<p>Juggins, Steve. 2017. <em>Rioja: Analysis of Quaternary Science Data</em>. <a href="http://www.staff.ncl.ac.uk/stephen.juggins/" class="uri">http://www.staff.ncl.ac.uk/stephen.juggins/</a>.</p>
+</div>
+<div id="ref-ladd2015impact">
+<p>Ladd, M, RG Way, and AE Viau. 2015. “The Impact of Using Different Modern Climate Data Sets in Pollen-Based Paleoclimate Reconstructions of North America.” <em>Quaternary Science Reviews</em> 112. Elsevier: 78–85.</p>
+</div>
+<div id="ref-rosen2003diatom">
+<p>Rosén, Peter, Ulf Segerström, Lars Eriksson, and Ingemar Renberg. 2003. “Do Diatom, Chironomid, and Pollen Records Consistently Infer Holocene July Air Temperature? A Comparison Using Sediment Cores from Four Alpine Lakes in Northern Sweden.” <em>Arctic, Antarctic, and Alpine Research</em> 35 (3). BioOne: 279–90.</p>
+</div>
+<div id="ref-way2015testing">
+<p>Way, Robert G, and Philip P Bonnaventure. 2015. “Testing a Reanalysis-Based Infilling Method for Areas with Sparse Discontinuous Air Temperature Data in Northeastern Canada.” <em>Atmospheric Science Letters</em> 16 (3). Wiley Online Library: 398–407.</p>
+</div>
+<div id="ref-whitmore2005modern">
+<p>Whitmore, J, K Gajewski, M Sawada, JW Williams, B Shuman, PJ Bartlein, T Minckley, et al. 2005. “Modern Pollen Data from North America and Greenland for Multi-Scale Paleoenvironmental Applications.” <em>Quaternary Science Reviews</em> 24 (16). Elsevier: 1828–48.</p>
+</div>
+</div>
+</body>
+</html>

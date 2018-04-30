@@ -23,13 +23,17 @@ Submissions should be between 6,000 and 8,000 words in length for Research, Meth
 
 ## Introduction
 
-A number of papers use multiple models to reconstruct past climates from pollen, using a number of methods.  These methods are described in Chevalier &al. IN general comparison of results between proxy records, or the same proxy using differnet methods show both similarities and significant differences. (Examples here?). However, diagnosing the reasons for the differences is difficult. For example, if chironomid and pollen records from the same core show differences in their down-core reconstruction, it may be due to bioligical aspects of the organism-climate relations, but it may also be due simply to differences in the modern samples or modern climate used, or perhaps the size and extent of the training set. If two reconstrucions are performed using different methods on the same proxy and on the same core, and there are differences in the reconstruction, it is not clear which may be "correct", unless all of the biases and other issues of the various methods are understood.  Comparing reconstrucitons in some region from different studies is similarly made difficult if the methods or data differed in the studies. There remain many questions about the various methodologies used in paleoclimate reconstruciton, especially as newer ones are developed and therefore have less experience associated with them. In order to quantitatively evaluate the impact of methodological choices on resulting reconstruction, a framework for systematic comparison of different methods using a standardized set of datasets is needed. This kind of formal comparison is common in the climate modeling community (CMIP, PMIP, etc.) (Taylor, et al. 2012, Braconnot, et al. 2012, etc), but has not become standard in evaluating choices in paleoclimate reconstructions. 
+A number of papers use multiple models to reconstruct past climates from pollen, using a number of methods.  These methods are described in Chevalier &al. In general comparison of results between proxy records, or the same proxy using different methods show both similarities and significant differences. (Examples here?). However, diagnosing the reasons for the differences is difficult. For example, if chironomid and pollen records from the same core show differences in their down-core reconstruction [e.g., @rosen2003diatom & others?], it may be due to bioligical aspects of the organism-climate relations, but it may also be due simply to differences in the modern samples or modern climate used, or perhaps the size and extent of the training set. If two reconstructions are performed using different methods on the same proxy and on the same core, and there are differences in the reconstruction, it is not clear which may be "correct", unless all of the biases and other issues of the various methods are understood.  Comparing reconstructions in some region from different studies is similarly made difficult if the methods or data differed in the studies. There remain many questions about the various methodologies used in paleoclimate reconstruction, especially as newer ones are developed and therefore have less experience associated with them. In order to quantitatively evaluate the impact of methodological choices on resulting reconstruction, a framework for systematic comparison of different methods using a standardized set of datasets is needed. This kind of formal comparison is common in the climate modeling community (CMIP, PMIP, etc.) (Taylor, et al. 2012, Braconnot, et al. 2012, etc), but has not become standard in evaluating choices in paleoclimate reconstructions. 
 
-We are doing this experiment using pollen data as these are the most widely used paleoclimate proxy records for Holocene-scale reconstrucitons. Importantly, continental databases are available fro North AMerica, Europe, and being developed for other parts of the world. There is therefore sufficient data available to make tests such the importance of sample domain on reconstrucvitons, or site density, length of environment gradient. Studies can be attempted on local, regional but also continetal and intercontinental scales. We anticipate that the resutls of these studies will be applicable to any proxy record. 
+We are doing this experiment using pollen data as these are the most widely used paleoclimate proxy records for Holocene-scale reconstructions. Importantly, continental databases are available from North AMerica, Europe, and being developed for other parts of the world. There is therefore sufficient data available to make tests such the importance of sample domain on reconstructions, or site density, length of environment gradient. Studies can be attempted on local, regional but also continetal and intercontinental scales. We anticipate that the results of these studies will be applicable to any proxy record. 
 
-Some background on reconstruction papers?
+## Pollen-Based Reconstruction Practice
 
-This benchmarking is neccessary because it provides a common platform under which methods can be tested to a set of pre-defined standards.  This then allows us to test hypotheses about different methods, examine the causes of method divergence and convergence and ask questions about how underlying physical and ecological processes might affect model reliability, precision and accuracy in a paleoecological context.
+
+
+## A Need for Benchmarks
+
+Benchmarking climate reconstruction models is necessary because benchmarks provides a common platform under which methods can be tested to a set of pre-defined standards.  This then allows us to test hypotheses about different methods, examine the causes of method divergence and convergence and ask questions about how underlying physical and ecological processes might affect model reliability, precision and accuracy in a paleoecological context.
 
 ## Methods
 
@@ -38,33 +42,34 @@ Broad Outline
 ### Datasets
 
 #### Pollen Data
-North American Modern Pollen Dataset version 1.8 (NAMPD; Whitmore et al., 2004):  The NAMPD v 1.8 contains 4833 modern pollen samples accumulated from the literature, along with matched climate and vegetation data. It is a research dataset, and therefore does not contain all of the pollen counts; for example rare and aquatic taxa are excluded. It is in the form of a series of tables in an excel file.  
+North American Modern Pollen Dataset version 1.8 [NAMPD; @whitmore2005modern]:  The NAMPD v1.8 contains 4833 modern pollen samples obtained from the published and unpublished sources, along with matched climate and vegetation data. It is a research dataset, and therefore does not contain all of the pollen counts; for example rare and aquatic taxa are excluded. It is in the form of a series of tables in an excel file.  
 
 #### Climate Data
-One question of interest is the importance of climate dataset in affecting climate reconstructions (Fortin and Gajewski, Ladd and Viau,). ALthough a number of methods have been used to assign climate data to pollen samples, for over 20 years, the most common method is to use widely-available gridded datsets(CRU,New et al; WorldClim; BEst;). These are available in different resolutions whcih may affect the results obtained.IN addition, the various products have been shown to have biases in data-sparse regions, for example the Arctic (Way), and these can affect the resuls obtained, at elast in a regional scale (Fortin & Gajewski). We therefore obtained xx datasets to compare the extent to whcih the different datasets are affected by the climate data. FOr example, the MAT produces reconstructions with higher high frequency variability, in part dependent on the resolution of the climate data.
+One question of interest is the importance of climate dataset in affecting climate reconstructions [@fortin2012potential;@ladd2015impact]. Although a number of methods have been used to assign climate data to pollen samples, for over 20 years, the most common method is to use widely-available gridded datsets(CRU,New et al; WorldClim; BEst;). These are available in different resolutions whcih may affect the results obtained. In addition, the various products have been shown to have biases in data-sparse regions, for example the Arctic [@way2015testing], and these can affect the results obtained, at least in a regional scale [@fortin2012potential]. We therefore obtained xx datasets to compare the extent to which different datasets are affected by the climate data. For example, MAT produces reconstructions with higher high frequency variability, in part dependent on the resolution of the climate data.
 
 
 ### Methods
 
-Pollen-based climate reconstruction has a number of implementations [], some of which are implemented directly in R [], others which have been implemented in other programming languages or as executable scripts.  This benchmarking approach uses wrappers for these methods, providing the opportunity to link to individual methods in a consistent manner, while still retaining the flexibility inherent to individual models or their various implementations.
+Pollen-based climate reconstruction has a number of implementations, some of which are implemented directly in R, others which have been implemented in other programming languages or as executable scripts.  This benchmarking approach uses wrappers for these methods, providing the opportunity to link to individual methods in a consistent manner, while still retaining the flexibility inherent to individual models or their various implementations.
 
-| Method | Implementation |
-| MAT | `rioja` |
-| WA | `rioja`  |
+| Method | Implementation | Citation |
+| ------ | -------------- | -------- |
+| MAT | `rioja` | [@rioja2017]    |
+| WA | `rioja`  | [@rioja2017]    |
 
-All wrapped functions are implemented using R to provide a consistent output format []().  
+All wrapped functions are implemented using R to provide a consistent output format.  
 
 ### Tests
 
 Testing models in cross-validation is a common method in statistics and machine learning to evaluate the predictive performance of a model. Cross-validation consists of five steps: 1) setting aside a subset of the data (called a test set), 2) fitting a model using the rest of the data (called a training set), 3) generating predictions for the held out test set, 4) evaluating the predictions versus the known truth for the test set, and 5) repeating the process with a different test and training set.
 
-In the context of paleoclimatic reconstruction careful consideration is required when generalizing from cross-validation performance to potential reconstruction perfomance (Jackson 2012). (need to expand on this; may belong in a different place)
+In the context of paleoclimatic reconstruction careful consideration is required when generalizing from cross-validation performance to potential reconstruction performance (Jackson 2012). (need to expand on this; may belong in a different place)
 
 Here we perform 10-fold cross-validation. This means that in each fold the test set comprises 10% of the full training dataset and after the ten folds every observation in the modern calibration dataset will have been in the test set. 
 
 We first evaluate cross-validation experiments by plotting the observed versus predicted covariate for each sample. We fit a linear regression to this and compare the slope to the one-to-one line. For a perfect model, the predicted values would fall directly on the one-to-one line. If the linear regression slope is less than one this indicates a shrinkage to the mean in the predictions. Slopes greater than one are not common in the context of the models we will be using, but they would indicate too large a variance in the predictions. 
 
-In addition to plotting, we evaluate the predictions using four scoring metrics: mean square error (MSE), mean absolute error (MAE), emipirical coverage of the 95% credible interval, and continuous rank probability score (CRPS). These are standard in statistics and each emphasize different predictive skill. MSE measures prediction accuracy of the mean while MAE emphasizes prediction accuracy of the median. For both MSE and MAE lower values represent better predictions. MSE and MAE do not contain much information on the models' skill in variance, for that we use coverage. Coverage is how many of the e.g. 95% credible intervals of the predicted covariate overlap with the observed covariate -- if the empirical coverage for a model's predcitions is close to the nominal rate (in this case, 95%) then we can say the model has a good variance and meaningful uncertainties. CRPS is a combined metric for the accuracy of both the mean and the spread of the uncertainty and is especially useful for models that generate a full predictive distribution (Gneiting 2011). Lower CRPS values represent better predictions. 
+In addition to plotting, we evaluate the predictions using four scoring metrics: mean square error (MSE), mean absolute error (MAE), empirical coverage of the 95% credible interval, and continuous rank probability score (CRPS). These are standard in statistics and each emphasize different predictive skill. MSE measures prediction accuracy of the mean while MAE emphasizes prediction accuracy of the median. For both MSE and MAE lower values represent better predictions. MSE and MAE do not contain much information on the models' skill in variance, for that we use coverage. Coverage is how many of the e.g. 95% credible intervals of the predicted covariate overlap with the observed covariate -- if the empirical coverage for a model's predictions is close to the nominal rate (in this case, 95%) then we can say the model has a good variance and meaningful uncertainties. CRPS is a combined metric for the accuracy of both the mean and the spread of the uncertainty and is especially useful for models that generate a full predictive distribution (Gneiting 2011). Lower CRPS values represent better predictions. 
 
 ## Working Example
 
@@ -87,13 +92,14 @@ colnames(climate)[5:8] <- c("0.5", "10", "2.5", "5.0")
 
 Within the benchmarking system a set of curated datasets are provided.  These datasets are fully described and returned as data objects from the `pcmip-data` package.  This package provides certain standardized elements, for example, data extraction based on the parent calibration dataset.
 
-To analyze the effects of input data on the calibration methods we began by asking a simple, bu illustrative question.
+To analyze the effects of input data on the calibration methods we began by asking a simple, but illustrative question.
 
 ## Results
 
 ### Climate Resolution
 
-Climate data was obtained from WorldClim at four different native resolutions, from the 10, 5, 2.5 and 0.5 arcminute data products [REF].  These data were then overlain on the location data for Whitmore et al [REF] described earlier.  
+Climate data was obtained from WorldClim at four different native resolutions, from the 10, 5, 2.5 and 0.5 arcminute data products [REF].  These data were then overlain on the location data for Whitmore et al. [-@whitmore2005modern] described earlier.  
+
 ## Conclusion
 
 ## References
