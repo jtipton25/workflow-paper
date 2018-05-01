@@ -1,11 +1,15 @@
 ---
 title: "Workflow Paper"
 date: "February 22, 2018"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+
 library(dplyr)
 library(purrr)
 ```
@@ -23,17 +27,30 @@ Submissions should be between 6,000 and 8,000 words in length for Research, Meth
 
 ## Introduction
 
-A number of papers use multiple models to reconstruct past climates from pollen, using a number of methods.  These methods are described in Chevalier &al. In general comparison of results between proxy records, or the same proxy using different methods show both similarities and significant differences. (Examples here?). However, diagnosing the reasons for the differences is difficult. For example, if chironomid and pollen records from the same core show differences in their down-core reconstruction [e.g., @rosen2003diatom & others?], it may be due to bioligical aspects of the organism-climate relations, but it may also be due simply to differences in the modern samples or modern climate used, or perhaps the size and extent of the training set. If two reconstructions are performed using different methods on the same proxy and on the same core, and there are differences in the reconstruction, it is not clear which may be "correct", unless all of the biases and other issues of the various methods are understood.  Comparing reconstructions in some region from different studies is similarly made difficult if the methods or data differed in the studies. There remain many questions about the various methodologies used in paleoclimate reconstruction, especially as newer ones are developed and therefore have less experience associated with them. In order to quantitatively evaluate the impact of methodological choices on resulting reconstruction, a framework for systematic comparison of different methods using a standardized set of datasets is needed. This kind of formal comparison is common in the climate modeling community (CMIP, PMIP, etc.) (Taylor, et al. 2012, Braconnot, et al. 2012, etc), but has not become standard in evaluating choices in paleoclimate reconstructions. 
+A number of papers use multiple pollen-based reconstruction models to reconstruct past climates.  These methods are described in Chevalier &al. [@chevalierinpress]. Comparisons among proxy records, or using the same proxy using with different reconstruction methods show both similarities and significant differences. Because of differences in spatial domain, method application and underlying datasets among papers it is often difficult to compare results between studies.  For example, if chironomid and pollen records from the same core show differences in their down-core reconstruction [e.g., @rosen2003diatom], it may be due to bioligical aspects of the organism-climate relations, but it may also be due simply to differences in the modern samples or modern climate used, or perhaps the size and extent of the different training set. If two reconstructions are performed using different methods on the same proxy and on the same core, and there are differences in the reconstruction, it is not clear which may be "correct", unless all of the biases and other issues of the various methods are understood [e.g., @peyron2011holocene;@brewer2008climate].  Comparing reconstructions in some region from different studies is similarly made difficult if the methods or data differed in the studies. 
 
-We are doing this experiment using pollen data as these are the most widely used paleoclimate proxy records for Holocene-scale reconstructions. Importantly, continental databases are available from North AMerica, Europe, and being developed for other parts of the world. There is therefore sufficient data available to make tests such the importance of sample domain on reconstructions, or site density, length of environment gradient. Studies can be attempted on local, regional but also continetal and intercontinental scales. We anticipate that the results of these studies will be applicable to any proxy record. 
+There remain many questions about the various methodologies used in paleoclimate reconstruction, especially as newer ones are developed and therefore have less experience associated with them. In order to quantitatively evaluate the impact of methodological choices on resulting reconstruction, a framework for systematic comparison of different methods using a standardized set of datasets is needed. This kind of formal comparison is common in the climate modeling community [CMIP: @taylor2012overview; PMIP: @braconnot2012evaluation], but has not become standard in evaluating choices in proxy-based paleoclimate reconstructions. 
+
+We are doing this experiment using pollen data as these are the most widely used paleoclimate proxy records for Holocene-scale reconstructions. Importantly, continental databases are available from North America, Europe, and being developed for other parts of the world [@williams2017neotoma], and new paleogeoinformatics approaches have provided the computational support to enable these methods to be generated as part of a reproducible workflow [@brewer2012paleoecoinformatics]. There is now sufficient data available to test questions about the importance of sample domain, site density, or the length of environment gradient on paleoclimate reconstructions. Studies can be attempted on local, regional but also at continental and intercontinental scales. We anticipate that the results of these studies will be applicable to any proxy record.
 
 ## Pollen-Based Reconstruction Practice
 
+```{r method_tables}
+pol_mthd <- readr::read_csv('data/reconst_method.csv')
 
+```
+
+This paper surveyed `r nrow(pol_mthd)` papers dealing with paleoclimate reconstruction from pollen data spanning the period from `r range(pol_mthd[,"Paper Year"])[1]` to `r range(pol_mthd[,"Paper Year"])[2]`.  Reconstructions include `r sum(stringr::str_detect(pol_mthd$Region, 'Europe'))` papers from Europe, and `r sum(stringr::str_detect(pol_mthd$Region, 'North America'))` from North America, as well as reconstructions from China, Russia, Africa and New Zealand (Table 1).
+
+```{r site_table}
+pol_mthd %>% head() %>% DT::datatable(options=list(dom="t"))
+```
 
 ## A Need for Benchmarks
 
 Benchmarking climate reconstruction models is necessary because benchmarks provides a common platform under which methods can be tested to a set of pre-defined standards.  This then allows us to test hypotheses about different methods, examine the causes of method divergence and convergence and ask questions about how underlying physical and ecological processes might affect model reliability, precision and accuracy in a paleoecological context.
+
+![](figures/benchmark_schematic.png){ width=50% }
 
 ## Methods
 
@@ -77,7 +94,8 @@ In addition to plotting, we evaluate the predictions using four scoring metrics:
 
 The benchmarking method proposed above provides an opportunity to examine the impacts of base data choice and resolution, by providing a framework with which to test multiple pollen based climate models, multiple base climate data and multiple resolutions of the climate data.
 
-```{r}
+```{r climate_figures, echo = FALSE}
+
 clim_files <- list.files('../benchmark-data/Climate/Worldclim/',
                          pattern="worldclim", full.names = TRUE)
 
@@ -87,6 +105,18 @@ climate <- clim_files %>%
                 by=c('ID2', 'LONDD', 'LATDD', 'ELEVATION'))
 
 colnames(climate)[5:8] <- c("0.5", "10", "2.5", "5.0")
+
+climate_grid <- climate %>% 
+  tidyr::gather(key, value, -ID2, -LONDD, -LATDD, -ELEVATION) %>% 
+  filter(LONDD > -100 & LONDD < -60 & LATDD > 30 & LATDD < 50)
+
+library(ggplot2)
+
+ggplot(data = climate_grid) +
+  geom_point(aes(x = LATDD, y = value / 10), size = 0.5) +
+  facet_wrap(~key) +
+  xlab("Latitude") +
+  ylab("July Temperature")
 
 ```
 
@@ -103,4 +133,3 @@ Climate data was obtained from WorldClim at four different native resolutions, f
 ## Conclusion
 
 ## References
-
